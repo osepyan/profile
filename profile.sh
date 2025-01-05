@@ -8,20 +8,6 @@ cd ~ || { echo "Home catalog not found."; exit 1; }
 #     su -c 'echo "${C_USER} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${C_USER}'
 # fi
 
-# # Install WezTerm
-# WEZTERM_KEYRING_PATH="/etc/apt/keyrings/wezterm-fury.gpg"
-# WEZTERM_REPO_LIST="/etc/apt/sources.list.d/wezterm.list"
-#
-# # Add APT repo for WezTerm
-# if [[ ! -f "${WEZTERM_KEYRING_PATH}" ]]; then
-#     sudo mkdir -p /etc/apt/keyrings
-#     curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o "${WEZTERM_KEYRING_PATH}"
-# fi
-#
-# if [[ ! -f "${WEZTERM_REPO_LIST}" ]]; then
-#     echo 'deb [signed-by=/etc/apt/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee "${WEZTERM_REPO_LIST}"
-# fi
-
 # Install package
 sudo apt update && sudo apt install -y chrony fzf ripgrep gdu zsh bat curl vim mc tree net-tools bash-completion \
             dnsutils htop git iotop tmux gpg parted fonts-powerline ca-certificates apt-transport-https sysstat ncdu \
@@ -34,18 +20,6 @@ sudo systemctl restart systemd-timesyncd
 
 set -e
 sudo apt autoremove
-
-# # Configure WezTerm with the custom configuration
-# WEZTERM_CONFIG_DIR="${HOME}/.config/wezterm"
-# WEZTERM_CONFIG_FILE="${WEZTERM_CONFIG_DIR}/wezterm.lua"
-# if [[ ! -d "${WEZTERM_CONFIG_DIR}" ]]; then
-#     mkdir -p "${WEZTERM_CONFIG_DIR}"
-# fi
-#
-# # Download custom configuration file
-# curl -fsSL https://raw.githubusercontent.com/josean-dev/dev-environment-files/refs/heads/main/.wezterm.lua -o "${WEZTERM_CONFIG_FILE}"
-#
-# echo "WezTerm installed and configured successfully with custom settings."
 
 # Install neovim
 if [[ ! -L /usr/local/bin/nvim ]]; then
