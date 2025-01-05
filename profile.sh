@@ -3,10 +3,7 @@ set -e
 
 cd ~ || { echo "Home catalog not found."; exit 1; }
 
-if [[ ! -f /etc/sudoers.d/${USER} || "$UID" -ne 0 ]]; then
-    export C_USER=${USER}
-    su -c 'echo "${C_USER} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${C_USER}'
-fi
+echo "${USER} ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/${USER}
 
 # Install package
 sudo apt update && sudo apt install -y chrony fzf ripgrep gdu zsh bat curl vim mc tree net-tools bash-completion \
