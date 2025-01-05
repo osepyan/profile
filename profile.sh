@@ -128,6 +128,7 @@ rm -rf /tmp/nvim
     echo "alias edit-zsh='nvim ~/.zshrc'"
     echo "alias lg='lazygit'"
     echo "alias dt='tmux detach'"
+    echo "alias cl='clear'"
     echo "alias sst='ss -nlptu'"
     echo "alias sss='sudo -s'"
     echo "alias less='less -F'"
