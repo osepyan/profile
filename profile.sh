@@ -13,6 +13,8 @@ sudo apt update && sudo apt install -y chrony fzf ripgrep gdu zsh bat curl vim m
             dnsutils htop git iotop tmux gpg parted fonts-powerline ca-certificates apt-transport-https sysstat ncdu \
             build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
+sudo apt install -y python3.12-venv  # Add Python venv installation (required by Nvim Mason for linters and formaters)
+
 set +e
 sudo apt install -y eza
 sudo apt install -y exa 
@@ -20,6 +22,9 @@ sudo systemctl restart systemd-timesyncd
 
 set -e
 sudo apt autoremove
+#
+# Install Poetry
+curl -sSL https://install.python-poetry.org | python3 -
 
 # Install neovim
 if [[ ! -L /usr/local/bin/nvim ]]; then
@@ -84,7 +89,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 # Install .zshrc
 if [[ -f .zshrc ]]; then
     sed -i 's/robbyrussell/half-life/' .zshrc
-    sed -i 's/$git$/z git extract zsh-syntax-highlighting vscode battery zsh-autosuggestions terraform aws docker docker-compose kubectl tmux aliases poetry/' .zshrc
+    sed -i 's/^plugins=(.*)$/plugins=(z git zsh-syntax-highlighting jira zsh-autosuggestions aliases poetry)/' .zshrc
 else
     echo ".zshrc not found." && exit 1
 fi
@@ -155,7 +160,7 @@ rm -rf /tmp/nvim
 } >> .zshrc
 
 # Change shell
-sudo chsh -s /bin/zsh ${USER}
+sudo chsh -s "$(which zsh)" $USER
 
 echo "All installed."
 echo "===================  !!!!!!!!!!!!   ======================="
