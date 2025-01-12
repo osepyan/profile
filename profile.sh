@@ -22,6 +22,7 @@ sudo apt autoremove
 
 # ----Install Poetry----
 curl -sSL https://install.python-poetry.org | python3 -
+$HOME/.local/bin/poetry config virtualenvs.in-project true
 
 # ----Install neovim----
 if [[ ! -L /usr/local/bin/nvim ]]; then
