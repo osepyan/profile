@@ -154,6 +154,7 @@ rm -rf /tmp/nvim
     echo "alias dt='tmux detach'"
     echo "alias lzd='lazydocker'"
     echo "alias cl='clear'"
+    echo "alias nv='nvim .'"
     echo "alias sst='ss -nlptu'"
     echo "alias sss='sudo -s'"
     echo "alias less='less -F'"
