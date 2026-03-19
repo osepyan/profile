@@ -26,11 +26,11 @@ $HOME/.local/bin/poetry config virtualenvs.in-project true
 
 # ----Install neovim----
 if [[ ! -L /usr/local/bin/nvim ]]; then
-curl -LO https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-x86_64.tar.gz
-sudo rm -rf /opt/nvim
-sudo tar -C /opt -xzf nvim-linux64.tar.gz
-sudo ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
-rm nvim-linux64.tar.gz
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+sudo rm -rf /opt/nvim-linux-x86_64
+sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+sudo ln -s /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim
+rm nvim-linux-x86_64.tar.gz
 fi
 
 # ----Install lazygit----
