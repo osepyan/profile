@@ -10,7 +10,7 @@ sudo apt update && sudo apt install -y chrony fzf ripgrep gdu zsh bat curl vim m
             dnsutils htop git iotop tmux gpg parted fonts-powerline ca-certificates apt-transport-https sysstat ncdu \
             build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
-sudo apt install -y python3.12-venv  # Add Python venv installation (required by Nvim Mason for linters and formaters)
+sudo apt install -y python3.13-venv  # Add Python venv installation (required by Nvim Mason for linters and formaters)
 
 set +e
 sudo apt install -y eza
@@ -64,27 +64,27 @@ tar xzvf lazydocker.tar.gz lazydocker
 install -Dm 755 lazydocker -t "$DIR"
 rm lazydocker lazydocker.tar.gz
 
-# ----Install tmux----
-# Install and configure tmux with custom settings and TPM
-if [[ -d ~/.tmux ]]; then
-    # Backup existing tmux directory
-    mv ~/.tmux ~/.tmux.bak
-fi
-
-# Clone the TPM repository for managing tmux plugins
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# Download the new tmux configuration file
-curl https://raw.githubusercontent.com/josean-dev/dev-environment-files/main/.tmux.conf --output ~/.tmux.conf
-
-# Ensure default terminal is set to support 256 colors
-{
-    echo 'set -g default-terminal "screen-256color"'
-    echo 'set -g mouse on' # Enable mouse support
-} >> ~/.tmux.conf
-
-# Install plugins via TPM
-~/.tmux/plugins/tpm/bin/install_plugins
+# # ----Install tmux----
+# # Install and configure tmux with custom settings and TPM
+# if [[ -d ~/.tmux ]]; then
+#     # Backup existing tmux directory
+#     mv ~/.tmux ~/.tmux.bak
+# fi
+#
+# # Clone the TPM repository for managing tmux plugins
+# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+#
+# # Download the new tmux configuration file
+# curl https://raw.githubusercontent.com/josean-dev/dev-environment-files/main/.tmux.conf --output ~/.tmux.conf
+#
+# # Ensure default terminal is set to support 256 colors
+# {
+#     echo 'set -g default-terminal "screen-256color"'
+#     echo 'set -g mouse on' # Enable mouse support
+# } >> ~/.tmux.conf
+#
+# # Install plugins via TPM
+# ~/.tmux/plugins/tpm/bin/install_plugins
 
 #----Install bottom https://github.com/ClementTsang/bottom----
 BTM_VERSION=$(curl -s "https://api.github.com/repos/ClementTsang/bottom/releases/latest" | grep  '"tag_name"' | cut -d '"' -f 4)
@@ -190,4 +190,4 @@ sudo chsh -s "$(which zsh)" $USER
 echo "All installed."
 echo "===================  !!!!!!!!!!!!   ======================="
 echo "Do not forget execute 'nvm install --lts' for node js"
-echo "Do not forget execute 'pyenv install 3.12 && pyenv global 3.12' for python"
+echo "Do not forget execute 'pyenv install 3.13 && pyenv global 3.13' for python"
