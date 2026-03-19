@@ -10,7 +10,7 @@ sudo apt update && sudo apt install -y chrony fzf ripgrep gdu zsh bat curl vim m
             dnsutils htop git iotop tmux gpg parted fonts-powerline ca-certificates apt-transport-https sysstat ncdu \
             build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
-sudo apt install -y python3.13-venv  # Add Python venv installation (required by Nvim Mason for linters and formaters)
+sudo apt install -y python3.12-venv  # Add Python venv installation (required by Nvim Mason for linters and formaters)
 
 set +e
 sudo apt install -y eza
@@ -190,4 +190,3 @@ sudo chsh -s "$(which zsh)" $USER
 echo "All installed."
 echo "===================  !!!!!!!!!!!!   ======================="
 echo "Do not forget execute 'nvm install --lts' for node js"
-echo "Do not forget execute 'pyenv install 3.13 && pyenv global 3.13' for python"
